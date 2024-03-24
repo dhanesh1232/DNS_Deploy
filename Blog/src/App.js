@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   getDataFromAPI = async () => {
-    const url = "http://localhost:3002";
+    const url = "https://dns-deploy-eco-api.vercel.app/";
     try {
       const res = await fetch(url, {
         method: "GET",
