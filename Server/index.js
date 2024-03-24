@@ -13,7 +13,7 @@ app.use(
     origin: "*",
   })
 );
-/*mongoose
+mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connection established");
@@ -21,7 +21,7 @@ app.use(
   .catch((err) => {
     console.error("MongoDB connection error:", err);
     process.exit(1);
-  });*/
+  });
 
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== "production") {
