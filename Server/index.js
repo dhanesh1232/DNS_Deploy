@@ -72,4 +72,4 @@ let product_value = [
   "IQOO",
 ];
 
-scrapProductCard(product_value[10]);
+scrapProductCard(product_value[16]);
