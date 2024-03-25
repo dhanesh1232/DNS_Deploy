@@ -16,6 +16,9 @@ export const ProfileView = styled.div`
       : "0px 5px 15px rgba(255, 255, 255, 0.3)"};
 
   height: 70%;
+  @media screen and (max-width: 576px) {
+    height: 60%;
+  }
   background: transparent;
   display: flex;
   flex-direction: column;
