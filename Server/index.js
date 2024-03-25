@@ -8,9 +8,10 @@ require("dotenv").config();
 const httpProxy = require("http-proxy");
 
 const app = express();
-const proxy = httpProxy.createProxyServer();
 
 const productData = require("./routes/products");
+const accountData = require("./routes/account");
+
 app.use(express.json());
 app.use(cors());
 
@@ -19,10 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connection established");
   })
@@ -38,6 +36,7 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 app.use("/api", productData);
+app.use("/api", accountData);
 async function scrapProductCard(item) {
   try {
     let url = `https://www.amazon.in/s?k=${item}`;
@@ -76,8 +75,7 @@ let product_value = [
   "Nothing",
   "IQOO",
 ];
-
-scrapProductCard(product_value[16]);
+//scrapProductCard(product_value[16]);
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);

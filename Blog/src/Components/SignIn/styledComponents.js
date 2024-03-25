@@ -3,7 +3,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const ProfilePage = styled.div`
   width: 100%;
-  height: 95%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,10 +25,7 @@ export const ProfileView = styled.div`
       ? "0px 5px 15px rgba(0, 0, 0, 0.2)"
       : "0px 5px 15px rgba(255, 255, 255, 0.3)"};
 
-  height: 70%;
-  @media screen and (max-width: 576px) {
-    height: 60%;
-  }
+  padding: 35px 5px;
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -46,7 +43,7 @@ export const ProfileView = styled.div`
 export const ProfileNavTab = styled.ul`
   border: 2px solid gray;
   width: 80%;
-  height: 10%;
+  height: 2rem;
   display: flex;
   align-items: center;
   background: transparent;
@@ -184,7 +181,7 @@ export const FormNavLink = styled.span`
   }
 `;
 export const FormError = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: red;
   margin-top: 10px;
   margin-bottom: 10px;

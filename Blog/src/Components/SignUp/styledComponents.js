@@ -4,9 +4,9 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 export const ProfilePage = styled.div`
   width: 100%;
   z-index: 1;
-  height: 95%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  height: 100%;
   justify-content: center;
   overflow: auto;
   &::-webkit-scrollbar-thumb {
@@ -19,15 +19,12 @@ export const ProfilePage = styled.div`
   }
 `;
 export const ProfileView = styled.div`
+  padding: 15px 5px;
   transition: all 0.3s ease-in-out;
   box-shadow: ${(props) =>
     props.isshadow
       ? "0px 5px 15px rgba(0, 0, 0, 0.2)"
       : "0px 5px 15px rgba(255, 255, 255, 0.35)"};
-  height: 100%;
-  @media screen and (max-width: 400px) {
-    height: 80%;
-  }
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -45,7 +42,7 @@ export const ProfileView = styled.div`
 export const ProfileNavTab = styled.ul`
   border: 2px solid gray;
   width: 80%;
-  height: 6.5%;
+  height: 2rem;
   display: flex;
   align-items: center;
   background: transparent;
@@ -181,7 +178,7 @@ export const FormNavLink = styled.span`
   }
 `;
 export const FormError = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: red;
   margin-top: 10px;
   margin-bottom: 10px;

@@ -43,9 +43,8 @@ const SignUpForm = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [isFocusedPhone, setIsFocusedPhone] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check if any required input is empty
     if (
       !username ||
       !password ||
@@ -61,8 +60,28 @@ const SignUpForm = () => {
       setErrorMsg(
         "Please fill in all fields and password must be at least 8 characters"
       );
+      return;
     }
     setShowError(false);
+    const userDetails = {
+      username: username,
+      password: password,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      confirmPassword: confirmPassword,
+    };
+    console.log(userDetails);
+    const res = await fetch("http://localhost:3002/api/user-registation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    });
+    const data = await res.json();
+    console.log(data);
   };
   return (
     <BlogContext.Consumer>
