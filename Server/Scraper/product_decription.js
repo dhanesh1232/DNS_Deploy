@@ -33,8 +33,7 @@ const scrapeProductInfo = async () => {
       console.log(`www.amazon.in${product.product_url}`);
       try {
         const res = await axios.get(
-          `https://www.amazon.in${product.product_url}`,
-          options
+          `https://www.amazon.in${product.product_url}`
         );
         const $ = cheerio.load(res.data);
         const title = $("#productTitle").text().trim();

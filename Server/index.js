@@ -3,10 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const ProductCard = require("./Models/mobiles");
-const { scraperAndGetProduct } = require("./Scraper/action");
+const { scrapeAmazonProduct } = require("./Scraper/scraper");
 require("dotenv").config();
 const app = express();
-
+const productData = require("./routes/products");
 app.use(express.json());
 app.use(
   cors({
@@ -37,8 +37,39 @@ app.get("/", (req, res) => {
     console.error(err);
   }
 });
+app.use("/api", productData);
 async function scrapProductCard(item) {
-  await scraperAndGetProduct(`https://www.amazon.in/s?k=${item}`);
+  let url = `https://www.amazon.in/s?k=${item}`;
+  console.log(url);
+  return await scrapeAmazonProduct(url, 1);
 }
+let product_value = [
+  "Samsung",
+  "Apple",
+  "Oppo",
+  "Android",
+  "iPhone",
+  "Mac OS",
+  "Windows",
+  "Phone",
+  "Ear Bud",
+  "RealMe",
+  "Vivo",
+  "One Plus",
+  "POCO",
+  "MI",
+  "Laptop",
+  "Acer",
+  "Asus",
+  "Laptop Bags",
+  "Dell",
+  "Lenovo",
+  "HP",
+  "Tabels",
+  "Ear Phones",
+  "Extended Screen",
+  "Nothing",
+  "IQOO",
+];
 
-scrapProductCard("phone");
+scrapProductCard(product_value[10]);

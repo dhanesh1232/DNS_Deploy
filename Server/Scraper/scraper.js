@@ -4,9 +4,8 @@ const https = require("https");
 require("dotenv").config();
 const ProductCard = require("../Models/mobiles");
 
-const scrapeAmazonProduct = async (url) => {
+const scrapeAmazonProduct = async (url, page) => {
   if (!url) return;
-
   const username = process.env.BRIGHT_DATA_USERNAME;
   const password = process.env.BRIGHT_DATA_PASSWORD;
   const port = 22225;
@@ -28,12 +27,12 @@ const scrapeAmazonProduct = async (url) => {
     httpsAgent: agent,
   };
 
-  let pages = 1;
+  let pages = page;
   const products = [];
 
   while (true) {
     try {
-      console.log("Next Page");
+      console.log(`Next Page ${pages}`);
       const res = await axios.get(`${url}&page=${pages}`, options);
       const $ = cheerio.load(res.data);
       $('div[data-component-type="s-search-result"]').each(
@@ -127,7 +126,6 @@ const scrapeAmazonProduct = async (url) => {
       const nextButton = $(".a-last");
       if (!nextButton.hasClass("a-disabled")) {
         pages++;
-        console.log(`Next Page ${pages}`);
       } else {
         break;
       }

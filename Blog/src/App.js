@@ -26,6 +26,8 @@ class App extends Component {
     menuToggle: false,
     activeProfileTab: profileTab[0].id,
     profileTab,
+    /*products Data*/
+    productsList: [],
   };
 
   componentDidMount() {
@@ -42,7 +44,7 @@ class App extends Component {
   }
 
   getDataFromAPI = async () => {
-    const url = "http://localhost:3002";
+    const url = "http://localhost:3002/api/get-products";
     try {
       const res = await fetch(url, {
         method: "GET",
@@ -52,6 +54,7 @@ class App extends Component {
       }
       const data = await res.json();
       console.log(data);
+      this.setState({ productsList: data });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,7 +73,13 @@ class App extends Component {
   };
 
   render() {
-    const { theme, menuToggle, activeProfileTab, profileTab } = this.state;
+    const {
+      theme,
+      menuToggle,
+      activeProfileTab,
+      profileTab,
+      productsList,
+    } = this.state;
     const admin_token = Cookies.get("admin_token");
     const sub_admin_token = Cookies.get("sub_admin_token");
     const user_token = Cookies.get("user_token");
@@ -81,6 +90,7 @@ class App extends Component {
           menuToggle,
           profileTab,
           activeProfileTab,
+          productsList,
           setTheme: this.setTheme,
           setMenuToggle: this.setMenuToggle,
           setActiveprofileTab: this.setActiveprofileTab,

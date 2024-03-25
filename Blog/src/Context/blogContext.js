@@ -5,6 +5,7 @@ const BlogContext = React.createContext({
   menuToggle: false,
   setTheme: () => {},
   setMenuToggle: () => {},
+  productsList: [],
   /*Profile Login and Register*/
   activeProfileTab: "SIGNIN",
   profileTab: [],
