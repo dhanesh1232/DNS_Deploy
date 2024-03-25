@@ -14,7 +14,7 @@ app.use(
   })
 );
 mongoose
-  .connect(process.env.MONGOOSE_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connection established");
   })
