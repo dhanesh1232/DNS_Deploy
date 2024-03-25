@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 const ProductCard = require("./Models/mobiles");
 const { scrapeAmazonProduct } = require("./Scraper/scraper");
 require("dotenv").config();
+const httpProxy = require("http-proxy");
+
 const app = express();
+const proxy = httpProxy.createProxyServer();
+
 const productData = require("./routes/products");
 app.use(express.json());
 app.use(
@@ -13,6 +17,15 @@ app.use(
     origin: "*",
   })
 );
+
+app.use("/api", (req, res) => {
+  proxy.web(req, res, { target: "https://dns-deploy-eco-api.vercel.app" });
+});
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -20,10 +33,6 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB connection established");
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-      console.log(`Server started on port ${PORT}`);
-    });
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);
