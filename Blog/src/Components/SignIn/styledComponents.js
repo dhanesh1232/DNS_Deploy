@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const ProfilePage = styled.div`
@@ -27,7 +27,7 @@ export const ProfileView = styled.div`
 
   height: 70%;
   @media screen and (max-width: 576px) {
-    height: 65%;
+    height: 60%;
   }
   background: transparent;
   display: flex;
