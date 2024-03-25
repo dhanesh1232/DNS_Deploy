@@ -45,6 +45,7 @@ class App extends Component {
 
   getDataFromAPI = async () => {
     const url = "http://localhost:3002/api/get-products";
+
     try {
       const res = await fetch(url, {
         method: "GET",
