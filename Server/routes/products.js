@@ -5,12 +5,9 @@ const router = express.Router();
 
 router.get("/get-products", async (req, res) => {
   try {
-    const products = await ProductCard.find();
-    res.json(products);
+    res.json({ message: "Hello World!", success: true });
   } catch (err) {
-    res.status(500).send({
-      message: err.message || "Some error occurred while retrieving products.",
-    });
+    console.error(err);
   }
 });
 module.exports = router;

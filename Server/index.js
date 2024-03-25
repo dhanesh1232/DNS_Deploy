@@ -36,14 +36,6 @@ if (process.env.NODE_ENV !== "production") {
     console.log(`Server started on port ${PORT} \nhttp://localhost:${PORT}`);
   });
 }
-
-app.get("/", (req, res) => {
-  try {
-    res.json({ message: "Hello World!", success: true });
-  } catch (err) {
-    console.error(err);
-  }
-});
 app.use("/api", productData);
 async function scrapProductCard(item) {
   let url = `https://www.amazon.in/s?k=${item}`;
