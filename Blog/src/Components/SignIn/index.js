@@ -12,6 +12,13 @@ import {
   FormGroup,
   FormLabel,
   FormInput,
+  FormButton,
+  ShowPassword,
+  ShowContainer,
+  ShowMessage,
+  FormNav,
+  FormNavLink,
+  FormError,
 } from "./styledComponents";
 
 const SignInForm = () => {
@@ -19,6 +26,22 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Check if any required input is empty
+    if (!password || !email || password.length < 8) {
+      setShowError(true);
+      setErrorMsg(
+        "Please fill in all fields and Password must be at least 8 characters"
+      );
+      return;
+    }
+
+    setShowError(false);
+  };
   return (
     <BlogContext.Consumer>
       {({ theme, activeProfileTab, setActiveprofileTab, profileTab }) => {
@@ -41,7 +64,7 @@ const SignInForm = () => {
               </ProfileNavTab>
               <PageInputs>
                 <FormHeading formhead={theme.toString()}>SignIn</FormHeading>
-                <PageForm>
+                <PageForm onSubmit={handleSubmit}>
                   <FormGroup>
                     <FormInput
                       type="email"
@@ -62,7 +85,7 @@ const SignInForm = () => {
                   </FormGroup>
                   <FormGroup>
                     <FormInput
-                      type="password"
+                      type={isShow ? "text" : "password"}
                       id="PASSWORD"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -78,6 +101,27 @@ const SignInForm = () => {
                       {password.length === 0 && "Enter Password"}
                     </FormLabel>
                   </FormGroup>
+                  <ShowContainer>
+                    <ShowPassword
+                      type="checkbox"
+                      id="SHOW_PASSWORD"
+                      onChange={() => {
+                        setIsShow(!isShow);
+                      }}
+                    />
+                    <ShowMessage htmlFor="SHOW_PASSWORD">
+                      Show Password
+                    </ShowMessage>
+                  </ShowContainer>
+                  <FormButton type="submit">Register</FormButton>
+                  {showError && <FormError>{errorMsg}*</FormError>}
+                  <FormNav
+                    to="/profile/signup"
+                    onClick={() => setActiveprofileTab("SIGNUP")}
+                  >
+                    <p>If you don't have already</p>
+                    <FormNavLink> SignUp</FormNavLink>
+                  </FormNav>
                 </PageForm>
               </PageInputs>
             </ProfileView>

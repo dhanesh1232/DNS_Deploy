@@ -9,7 +9,7 @@ router.get("/get-products", async (req, res) => {
     console.log(products);
     res.json(products);
   } catch (err) {
-    res.status(500).send({
+    res.status(500).json({
       message: err.message || "Some error occurred while retrieving products.",
     });
   }

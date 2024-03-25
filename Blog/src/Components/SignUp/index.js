@@ -13,6 +13,13 @@ import {
   FormGroup,
   FormLabel,
   FormInput,
+  FormButton,
+  FormError,
+  ShowPassword,
+  ShowContainer,
+  ShowMessage,
+  FormNav,
+  FormNavLink,
 } from "./styledComponents";
 
 const SignUpForm = () => {
@@ -23,6 +30,7 @@ const SignUpForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [isShow, setIsShow] = useState(false);
   const [isFocusedUsername, setIsFocusedUsername] = useState(false);
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
@@ -31,8 +39,31 @@ const SignUpForm = () => {
   const [isFocusedConfirmPassword, setIsFocusedConfirmPassword] = useState(
     false
   );
+  const [showError, setShowError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [isFocusedPhone, setIsFocusedPhone] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Check if any required input is empty
+    if (
+      !username ||
+      !password ||
+      !email ||
+      !firstName ||
+      !lastName ||
+      !phone ||
+      !confirmPassword ||
+      confirmPassword.length < 8 ||
+      password.length < 8
+    ) {
+      setShowError(true);
+      setErrorMsg(
+        "Please fill in all fields and password must be at least 8 characters"
+      );
+    }
+    setShowError(false);
+  };
   return (
     <BlogContext.Consumer>
       {({ theme, activeProfileTab, setActiveprofileTab, profileTab }) => {
@@ -55,7 +86,7 @@ const SignUpForm = () => {
               </ProfileNavTab>
               <PageInputs>
                 <FormHeading formhead={theme.toString()}>SignUp</FormHeading>
-                <PageForm>
+                <PageForm onSubmit={handleSubmit}>
                   <FormGroup>
                     <FormInput
                       type="text"
@@ -114,7 +145,7 @@ const SignUpForm = () => {
                     <FormInput
                       type="text"
                       id="LAST_NAME"
-                      value={firstName}
+                      value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       placeholder="Enter Last Name"
                       onFocus={() => setIsFocusedLastName(true)}
@@ -148,7 +179,7 @@ const SignUpForm = () => {
                   </FormGroup>
                   <FormGroup>
                     <FormInput
-                      type="password"
+                      type={isShow ? "text" : "password"}
                       id="PASSWORD"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -166,9 +197,9 @@ const SignUpForm = () => {
                   </FormGroup>
                   <FormGroup>
                     <FormInput
-                      type="password"
+                      type={isShow ? "text" : "password"}
                       id="CONFIRM_PASSWORD"
-                      value={firstName}
+                      value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Enter Confirm Password"
                       onFocus={() => setIsFocusedConfirmPassword(true)}
@@ -182,6 +213,27 @@ const SignUpForm = () => {
                       {confirmPassword.length === 0 && "Enter Confirm Password"}
                     </FormLabel>
                   </FormGroup>
+                  <ShowContainer>
+                    <ShowPassword
+                      type="checkbox"
+                      id="SHOW_PASSWORD"
+                      onChange={() => {
+                        setIsShow(!isShow);
+                      }}
+                    />
+                    <ShowMessage htmlFor="SHOW_PASSWORD">
+                      Show Password
+                    </ShowMessage>
+                  </ShowContainer>
+                  <FormButton type="submit">Register</FormButton>
+                  {showError && <FormError>{errorMsg}*</FormError>}
+                  <FormNav
+                    to="/profile/signin"
+                    onClick={() => setActiveprofileTab("SIGNIN")}
+                  >
+                    <p>If you have already</p>
+                    <FormNavLink> SignIn</FormNavLink>
+                  </FormNav>
                 </PageForm>
               </PageInputs>
             </ProfileView>

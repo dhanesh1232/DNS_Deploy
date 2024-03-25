@@ -28,6 +28,7 @@ export const ProfileView = styled.div`
     min-width: 400px;
   }
   border-radius: 12px;
+  border-top: 8px solid blue;
 `;
 export const ProfileNavTab = styled.ul`
   border: 2px solid gray;
@@ -107,8 +108,62 @@ export const FormInput = styled.input`
     color: transparent;
   }
 `;
-export const FormButton = styled.button``;
-export const FormNav = styled(Link)``;
-export const FormNavPara = styled.p``;
-export const FormNavLink = styled.span``;
-export const FormError = styled.p``;
+export const ShowContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 2rem;
+  margin-bottom: 5px;
+`;
+export const ShowMessage = styled.label`
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 2px;
+`;
+export const ShowPassword = styled.input`
+  height: 1rem;
+  width: 1rem;
+  cursor: pointer;
+`;
+export const FormButton = styled.button`
+  width: 100%;
+  height: 2rem;
+  background: #0494ef;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  &:active {
+    background: green;
+  }
+`;
+export const FormNav = styled(Link)`
+  width: 100%;
+  height: 1rem;
+  justify-content: center;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: gray;
+  text-decoration: none;
+  font-family: "Roboto";
+  gap: 5px;
+  margin-top: 15px;
+`;
+export const FormNavLink = styled.span`
+  color: #000;
+  font-size: 14px;
+  &:hover {
+    color: #0494ef;
+  }
+`;
+export const FormError = styled.p`
+  font-size: 14px;
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+`;
