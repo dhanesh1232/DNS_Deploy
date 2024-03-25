@@ -14,9 +14,16 @@ app.use(
   })
 );
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("MongoDB connection established");
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);
