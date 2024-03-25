@@ -12,15 +12,7 @@ const proxy = httpProxy.createProxyServer();
 
 const productData = require("./routes/products");
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-
-app.use("/api", (req, res) => {
-  proxy.web(req, res, { target: "https://dns-deploy-eco-api.vercel.app" });
-});
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -47,9 +39,14 @@ if (process.env.NODE_ENV !== "production") {
 }
 app.use("/api", productData);
 async function scrapProductCard(item) {
-  let url = `https://www.amazon.in/s?k=${item}`;
-  console.log(url);
-  return await scrapeAmazonProduct(url, 1);
+  try {
+    let url = `https://www.amazon.in/s?k=${item}`;
+    console.log(url);
+    return await scrapeAmazonProduct(url, 1);
+  } catch (err) {
+    console.error("Error scraping product card:", err);
+    // Handle the error as needed
+  }
 }
 let product_value = [
   "Samsung",
@@ -81,3 +78,7 @@ let product_value = [
 ];
 
 scrapProductCard(product_value[16]);
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1);
+});
