@@ -221,7 +221,10 @@ const SignUpForm = () => {
                         setIsShow(!isShow);
                       }}
                     />
-                    <ShowMessage htmlFor="SHOW_PASSWORD">
+                    <ShowMessage
+                      htmlFor="SHOW_PASSWORD"
+                      islabel={theme.toString()}
+                    >
                       Show Password
                     </ShowMessage>
                   </ShowContainer>

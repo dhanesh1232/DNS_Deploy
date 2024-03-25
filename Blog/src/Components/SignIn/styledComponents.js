@@ -1,12 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const ProfilePage = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
+  z-index: 1;
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
 `;
 export const ProfileView = styled.div`
   transition: all 0.3s ease-in-out;
@@ -17,7 +27,7 @@ export const ProfileView = styled.div`
 
   height: 70%;
   @media screen and (max-width: 576px) {
-    height: 60%;
+    height: 65%;
   }
   background: transparent;
   display: flex;
@@ -92,17 +102,24 @@ export const FormLabel = styled.label`
   top: ${({ isfocused }) => (JSON.parse(isfocused) ? "-10px" : "3px")};
   left: 5px;
   font-size: ${({ isfocused }) => (JSON.parse(isfocused) ? "12px" : "16px")};
-  color: ${({ isfocused }) => (JSON.parse(isfocused) ? "#333" : "#acacac")};
+  color: ${(props) =>
+    JSON.parse(props.islabel)
+      ? JSON.parse(props.isfocused)
+        ? "#fff"
+        : "#acacac"
+      : JSON.parse(props.isfocused)
+      ? "#333"
+      : "#acacac"};
   padding: 0 10px;
   transition: ease-in-out all 0.15s;
-  background: ${({ islabel }) => (JSON.parse(islabel) ? "#333" : "#fff")};
+  background: ${({ islabel }) => (JSON.parse(islabel) ? "#262626" : "#fff")};
 `;
 export const FormInput = styled.input`
   height: 2rem;
   width: 100%;
   border: 1px solid gray;
   transition: all ease-in-out 0.15s;
-  background-color: #fff;
+  background: transparent;
   border-radius: 5px;
   color: #262626;
   padding-left: 10px;
@@ -125,6 +142,7 @@ export const ShowMessage = styled.label`
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 2px;
+  color: ${(props) => (JSON.parse(props.islabel) ? "#fff" : "#000")};
 `;
 export const ShowPassword = styled.input`
   height: 1rem;
