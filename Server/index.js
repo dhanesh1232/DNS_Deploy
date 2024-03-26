@@ -5,18 +5,14 @@ const mongoose = require("mongoose");
 const ProductCard = require("./Models/mobiles");
 const { scrapeAmazonProduct } = require("./Scraper/scraper");
 require("dotenv").config();
-const httpProxy = require("http-proxy");
 
 const app = express();
 
-const productData = require("./routes/products");
-const accountData = require("./routes/account");
-
-app.use(express.json());
-app.use(cors());
-
-app.use(express.json({ limit: '10mb' })); 
+// Middleware
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(cors()); // Enable CORS for all routes
+app.options("*", cors()); // Enable pre-flight OPTIONS request for all routes
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://dns-deploy-eco-frontend.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -24,8 +20,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("MongoDB connection established");
   })
@@ -34,14 +34,21 @@ mongoose
     process.exit(1);
   });
 
-const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT} \nhttp://localhost:${PORT}`);
-  });
-}
+// Routes
+const productData = require("./routes/products");
+const accountData = require("./routes/account");
 app.use("/api", productData);
 app.use("/api", accountData);
+
+// Start server
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+  });
+}
+
+// Function to scrape product card
 async function scrapProductCard(item) {
   try {
     let url = `https://www.amazon.in/s?k=${item}`;
@@ -84,3 +91,4 @@ process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
 });
+module.exports = app; 
