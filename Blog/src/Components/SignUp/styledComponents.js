@@ -20,6 +20,7 @@ export const ProfilePage = styled.div`
   }
 `;
 export const ProfileView = styled.div`
+margin:25px 10px;
   padding: 15px 5px;
   transition: all 0.3s ease-in-out;
   box-shadow: ${(props) =>
