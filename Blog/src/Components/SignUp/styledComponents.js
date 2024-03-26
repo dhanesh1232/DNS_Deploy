@@ -8,6 +8,7 @@ export const ProfilePage = styled.div`
   align-items: flex-start;
   height: 100%;
   justify-content: center;
+  padding-top:20px;
   overflow: auto;
   &::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.3);
