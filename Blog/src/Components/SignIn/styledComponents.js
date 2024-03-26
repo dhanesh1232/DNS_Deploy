@@ -5,9 +5,10 @@ export const ProfilePage = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: auto;
+  padding-top: 75px;
   z-index: 1;
   &::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.3);

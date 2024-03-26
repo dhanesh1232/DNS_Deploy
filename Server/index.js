@@ -75,7 +75,7 @@ let product_value = [
   "Nothing",
   "IQOO",
 ];
-//scrapProductCard(product_value[16]);
+scrapProductCard(product_value[0]);
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
