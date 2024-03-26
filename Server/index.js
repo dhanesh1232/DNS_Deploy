@@ -44,7 +44,6 @@ async function scrapProductCard(item) {
     return await scrapeAmazonProduct(url, 1);
   } catch (err) {
     console.error("Error scraping product card:", err);
-    // Handle the error as needed
   }
 }
 let product_value = [
@@ -68,16 +67,15 @@ let product_value = [
   "Laptop Bags",
   "Dell",
   "Lenovo",
-  "HP",
-  "Tabels",
   "Ear Phones",
   "Extended Screen",
   "Nothing",
   "IQOO",
+  "Projector",
+  "Chargers",
 ];
 scrapProductCard(product_value[0]);
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
 });
-console.log(typeof process.env.OWNER_EMAIL)
