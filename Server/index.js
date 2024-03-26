@@ -4,10 +4,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const ProductCard = require("./Models/mobiles");
 const { scrapeAmazonProduct } = require("./Scraper/scraper");
+const compression = require("compression");
 require("dotenv").config();
 
 const app = express();
-
+app.use(compression());
 // Middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -47,8 +48,6 @@ if (process.env.NODE_ENV !== "test") {
     console.log(`Server started on port ${PORT}`);
   });
 }
-
-// Function to scrape product card
 async function scrapProductCard(item) {
   try {
     let url = `https://www.amazon.in/s?k=${item}`;
