@@ -173,7 +173,7 @@ export const FormNav = styled(Link)`
   margin-top: 15px;
 `;
 export const FormNavLink = styled.span`
-  color: #000;
+  color: ${(props) => (JSON.parse(props.ispara) ? "#fff" : "#000")};
   font-size: 14px;
   &:hover {
     color: #0494ef;

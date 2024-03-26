@@ -254,7 +254,7 @@ const SignUpForm = () => {
                     onClick={() => setActiveprofileTab("SIGNIN")}
                   >
                     <p>If you have already</p>
-                    <FormNavLink> SignIn</FormNavLink>
+                    <FormNavLink ispara={theme.toString()}>SignIn</FormNavLink>
                   </FormNav>
                 </PageForm>
               </PageInputs>

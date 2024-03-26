@@ -123,7 +123,7 @@ const SignInForm = () => {
                     onClick={() => setActiveprofileTab("SIGNUP")}
                   >
                     <p>If you don't have already</p>
-                    <FormNavLink> SignUp</FormNavLink>
+                    <FormNavLink ispara={theme.toString()}>SignUp</FormNavLink>
                   </FormNav>
                 </PageForm>
               </PageInputs>
