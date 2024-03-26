@@ -17,10 +17,12 @@ app.use(cors());
 
 app.use(express.json({ limit: '10mb' })); 
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
+app.use((err, req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://dns-deploy-eco-frontend.vercel.app");
+  res.status(500).json({ error: err.message }); 
+  next()
 });
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
