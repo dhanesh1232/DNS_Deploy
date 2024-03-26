@@ -15,7 +15,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cors()); // Enable CORS for all routes
 app.options("*", cors()); // Enable pre-flight OPTIONS request for all routes
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://dns-deploy-eco-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", `${`https://dns-deploy-eco-frontend.vercel.app`|| `*`}`);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
