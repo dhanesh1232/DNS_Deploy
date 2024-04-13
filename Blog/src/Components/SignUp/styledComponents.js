@@ -68,7 +68,7 @@ export const ProfileLink = styled(Link)`
       ? "#fff"
       : "#333"};
   transition: all 0.3s ease-in-out;
-  background: ${(props) => (JSON.parse(props.isbg) ? "blue" : "")};
+  background: ${(props) => (JSON.parse(props.isbg) ? "#1702f9ea" : "")};
 `;
 export const PageInputs = styled.div`
   width: 80%;

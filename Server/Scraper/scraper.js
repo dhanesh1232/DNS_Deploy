@@ -32,8 +32,13 @@ const scrapeAmazonProduct = async (url, page) => {
 
   while (true) {
     try {
-      console.log(`Next Page ${pages}`);
-      const res = await axios.get(`${url}&page=${pages}`, options);
+      console.log(`Next Page ${pages} Started....`);
+      const res = await axios.get(`${url}&page=${pages}`,{
+        headers: {
+          "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+        },
+        httpsAgent: agent,
+      });
       const $ = cheerio.load(res.data);
       $('div[data-component-type="s-search-result"]').each(
         async (index, element) => {
@@ -79,7 +84,7 @@ const scrapeAmazonProduct = async (url, page) => {
               } else {
                 console.log(
                   "Invalid product price:",
-                  product.product_current_price
+                  product
                 );
               }
             } else {

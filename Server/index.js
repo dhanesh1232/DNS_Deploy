@@ -12,8 +12,8 @@ app.use(compression());
 // Middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
-app.use(cors()); // Enable CORS for all routes
-app.options("*", cors()); // Enable pre-flight OPTIONS request for all routes
+app.use(cors());
+app.options("*", cors()); 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -23,10 +23,7 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connection established");
   })
@@ -63,8 +60,8 @@ let product_value = [
   "Oppo",
   "Android",
   "iPhone",
-  "Mac OS",
-  "Windows",
+  "Mac Book",
+  "Thinkpad",
   "Phone",
   "Ear Bud",
   "RealMe",
@@ -85,9 +82,9 @@ let product_value = [
   "Projector",
   "Chargers",
 ];
-scrapProductCard(product_value[0]);
+scrapProductCard(product_value[3]);
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
 });
-module.exports = app; 
+module.exports = app;
