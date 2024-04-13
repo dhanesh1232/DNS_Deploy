@@ -198,7 +198,7 @@ export const Line = styled.div`
               ${rotateLeft}
             `
           : ""}
-      1.3s ease forwards 0.3s;
+      1.8s ease forwards 0.3s;
   }
   &:nth-child(2) {
     transform: rotate(0deg);
@@ -208,7 +208,7 @@ export const Line = styled.div`
               ${rotateRight}
             `
           : ""}
-      1.3s ease forwards 0.3s;
+      1.8s ease forwards 0.3s;
   }
 `;
 export const MenuButton = styled.div`
