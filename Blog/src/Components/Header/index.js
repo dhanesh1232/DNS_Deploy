@@ -101,15 +101,6 @@ const Header = () => {
                   </NavLink>
                   <NavLink
                     linkcolor={theme.toString()}
-                    to="/about"
-                    onClick={() => {
-                      setMenuToggle();
-                    }}
-                  >
-                    About
-                  </NavLink>
-                  <NavLink
-                    linkcolor={theme.toString()}
                     to="/explore"
                     onClick={() => {
                       setMenuToggle();
@@ -160,6 +151,15 @@ const Header = () => {
                   </NavLink>
                   <NavLink
                     linkcolor={theme.toString()}
+                    to="/about"
+                    onClick={() => {
+                      setMenuToggle();
+                    }}
+                  >
+                    About
+                  </NavLink>
+                  <NavLink
+                    linkcolor={theme.toString()}
                     to="/contact"
                     onClick={() => {
                       setMenuToggle();
@@ -167,6 +167,7 @@ const Header = () => {
                   >
                     Contact
                   </NavLink>
+                  
                 </NavList>
               </NavPage>
             </NavContainer>
