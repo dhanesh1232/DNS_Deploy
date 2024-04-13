@@ -71,7 +71,7 @@ export const NavPage = styled.div`
   position: relative;
   transition: all 0.3s ease;
   z-index: 100;
-  background: ${(props) => (JSON.parse(props.isbgtheme) ? "#000" : "#fff")};
+  background: ${(props) => (JSON.parse(props.isbgtheme) ? "#262626" : "#fff")};
   @media screen and (max-width: 768px) {
     top: 0;
     width: 150px;
