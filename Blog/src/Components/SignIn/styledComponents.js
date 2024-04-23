@@ -32,7 +32,7 @@ export const ProfileView = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 35%;
+  max-width: 30%;
   min-width: 300px;
   flex: 1 0;
   @media (min-width: 576px) {

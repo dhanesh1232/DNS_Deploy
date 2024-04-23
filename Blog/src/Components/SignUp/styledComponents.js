@@ -32,7 +32,7 @@ export const ProfileView = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 35%;
+  max-width: 30%;
   min-width: 300px;
   flex: 1 0;
   @media (min-width: 576px) {
@@ -130,15 +130,32 @@ export const ShowContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: space-between;
   height: 2rem;
   margin-bottom: 5px;
 `;
+export const ShowGroup = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 50%;
+`
+export const UserContainer = styled.div`
+  width:50%;
+  display: flex;
+  align-items: center;
+  gap: 5px;`
+export const UserCodeInput = styled.input`
+  width: 7rem;
+  height: 1.8rem;
+  border: 1px solid gray;
+  font-size: 12px;
+`
 export const ShowMessage = styled.label`
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 2px;
-  color: ${(props) => (JSON.parse(props.islabel) ? "#fff" : "#000")};
+  color: ${(props) => (JSON.parse(props.islabel) ? "#fff" : "gray")};
 `;
 export const ShowPassword = styled.input`
   height: 1rem;

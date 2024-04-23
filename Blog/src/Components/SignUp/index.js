@@ -20,6 +20,8 @@ import {
   ShowMessage,
   FormNav,
   FormNavLink,
+  ShowGroup,
+  UserCodeInput,UserContainer
 } from "./styledComponents";
 
 const SignUpForm = () => {
@@ -42,7 +44,8 @@ const SignUpForm = () => {
   const [showError, setShowError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isFocusedPhone, setIsFocusedPhone] = useState(false);
-
+  const [isCode, setIsCode] = useState(false);
+  const [userCode , setUserCode] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -54,7 +57,7 @@ const SignUpForm = () => {
       !phone ||
       !confirmPassword ||
       confirmPassword.length < 8 ||
-      password.length < 8
+      password.length < 8 || isCode && !userCode
     ) {
       setShowError(true);
       setErrorMsg(
@@ -233,6 +236,7 @@ const SignUpForm = () => {
                     </FormLabel>
                   </FormGroup>
                   <ShowContainer>
+                    <ShowGroup>
                     <ShowPassword
                       type="checkbox"
                       id="SHOW_PASSWORD"
@@ -246,6 +250,16 @@ const SignUpForm = () => {
                     >
                       Show Password
                     </ShowMessage>
+                    </ShowGroup>
+                    <UserContainer>
+                       <ShowPassword type="checkbox"  id="IS_CODE" 
+                       onChange={() => {
+                        setIsCode(!isCode);
+                      }}
+                      />
+                      {!isCode && <ShowMessage islabel={theme.toString()} htmlFor="IS_CODE">Refferal Code</ShowMessage>}
+                       {isCode && <UserCodeInput placeholder="Enter User Code"/>}
+                    </UserContainer>
                   </ShowContainer>
                   <FormButton type="submit">Register</FormButton>
                   {showError && <FormError>{errorMsg}*</FormError>}

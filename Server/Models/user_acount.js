@@ -37,6 +37,16 @@ const userAccountSchema = new Schema({
     type: String,
     default: "",
   },
+  user_id:{
+    type: String,
+    required: true,
+    unique: true,
+    default: "",
+  },
+  created_date:{
+    type: Date,
+    default: Date.now,
+  }
 });
 
 module.exports = mongoose.model("userAccountSchema", userAccountSchema);
