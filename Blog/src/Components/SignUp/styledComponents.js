@@ -171,6 +171,7 @@ export const FormButton = styled.button`
   border: none;
   outline: none;
   border-radius: 8px;
+  cursor: pointer;
   &:active {
     background: green;
   }
@@ -203,3 +204,82 @@ export const FormError = styled.p`
   margin-bottom: 10px;
   font-weight: bold;
 `;
+export const VerifyContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: #b1b1b17b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const VerifyView = styled.div`
+  width: 350px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+`
+export const VerifyForm = styled.form`
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  `
+export const VerifyTitle = styled.h2`
+  font-size:24px;
+  text-align:center;
+`
+export const VerifyCon = styled.div`
+  width:100%;
+  height:75%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:25px;
+  gap: 15px;
+`
+export const VerifyInput = styled.input`
+  width: 14rem;
+  height: 2.5rem;
+  border: 1px solid gray;
+  align-self: center; 
+  transition: all ease-in-out 0.15s;
+  border:2px solid #000;
+  border-radius:8px;
+  padding-left:8px;
+  font-size:16px;
+  outline:none;
+`
+export const VerifyButton = styled.button`
+  width: 5rem;
+  height: 2.5rem;
+  background: #0494ef;
+  font-size: 16px;
+  border:none;
+  outline:none;
+  box-shadow: 5px 5px 15px;
+  border-radius:4px;
+  cursor: pointer;
+  font-weight:600;
+  color:#fff;
+  &:hover{
+    background: blue;
+    border: none;
+    border-radius:20px;
+  }
+  &:active{
+    background: lime;
+    border: none;
+    border-radius:20px;
+  }
+`
+export const VerifyError = styled.p`
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`

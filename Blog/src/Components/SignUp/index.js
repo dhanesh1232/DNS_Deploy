@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import BlogContext from "../../Context/blogContext";
+import Popup from "reactjs-popup";
 import "./index.css";
 import {
   PageInputs,
@@ -21,7 +22,16 @@ import {
   FormNav,
   FormNavLink,
   ShowGroup,
-  UserCodeInput,UserContainer
+  UserCodeInput,
+  UserContainer,
+  VerifyContainer,
+  VerifyView,
+  VerifyForm,
+  VerifyTitle,
+  VerifyInput,
+  VerifyCon,
+  VerifyButton,
+  VerifyError,
 } from "./styledComponents";
 
 const SignUpForm = () => {
@@ -45,7 +55,12 @@ const SignUpForm = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [isFocusedPhone, setIsFocusedPhone] = useState(false);
   const [isCode, setIsCode] = useState(false);
-  const [userCode , setUserCode] = useState('');
+  const [userCode, setUserCode] = useState("");
+  //Sign Up Steps
+  const [otpResponse, setOtpResponse] = useState("");
+  const [otpStatus, setOtpStatus] = useState(false);
+  const [verificationErrorMsg, setVerificationErrorMsg] = useState("");
+  const [verificationStatus, setVerificationStatus] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -57,7 +72,8 @@ const SignUpForm = () => {
       !phone ||
       !confirmPassword ||
       confirmPassword.length < 8 ||
-      password.length < 8 || isCode && !userCode
+      password.length < 8 ||
+      (isCode && !userCode)
     ) {
       setShowError(true);
       setErrorMsg(
@@ -67,6 +83,35 @@ const SignUpForm = () => {
     }
     setShowError(false);
     const userDetails = {
+      username,
+      email,
+      firstName,
+      lastName,
+    };
+    const res = await fetch("http://localhost:3002/api/mail-verfication", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    });
+    const data = await res.json();
+    if (res.status === 200) {
+      setOtpStatus(data.success);
+      console.log(data)
+    } else {
+      null;
+    }
+  };
+  /*OTP verification Step*/
+  const verifyOTPAndRegister = async (e) => {
+    e.preventDefault();
+    if (otpResponse === "") {
+      setVerificationStatus(true);
+      setVerificationErrorMsg("Please enter OTP");
+      return;
+    }
+    const userDetails = {
       username: username,
       password: password,
       email: email,
@@ -74,9 +119,11 @@ const SignUpForm = () => {
       lastName: lastName,
       phone: phone,
       confirmPassword: confirmPassword,
+      userCode: userCode,
+      userOtp: otpResponse,
     };
     console.log(userDetails);
-    const res = await fetch("http://localhost:3002/api/user-registation", {
+    const res = await fetch("http://localhost:3002/api/verify-otp-register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -237,28 +284,43 @@ const SignUpForm = () => {
                   </FormGroup>
                   <ShowContainer>
                     <ShowGroup>
-                    <ShowPassword
-                      type="checkbox"
-                      id="SHOW_PASSWORD"
-                      onChange={() => {
-                        setIsShow(!isShow);
-                      }}
-                    />
-                    <ShowMessage
-                      htmlFor="SHOW_PASSWORD"
-                      islabel={theme.toString()}
-                    >
-                      Show Password
-                    </ShowMessage>
+                      <ShowPassword
+                        type="checkbox"
+                        id="SHOW_PASSWORD"
+                        onChange={() => {
+                          setIsShow(!isShow);
+                        }}
+                      />
+                      <ShowMessage
+                        htmlFor="SHOW_PASSWORD"
+                        islabel={theme.toString()}
+                      >
+                        Show Password
+                      </ShowMessage>
                     </ShowGroup>
                     <UserContainer>
-                       <ShowPassword type="checkbox"  id="IS_CODE" 
-                       onChange={() => {
-                        setIsCode(!isCode);
-                      }}
+                      <ShowPassword
+                        type="checkbox"
+                        id="IS_CODE"
+                        onChange={() => {
+                          setIsCode(!isCode);
+                        }}
                       />
-                      {!isCode && <ShowMessage islabel={theme.toString()} htmlFor="IS_CODE">Refferal Code</ShowMessage>}
-                       {isCode && <UserCodeInput placeholder="Enter User Code"/>}
+                      {!isCode && (
+                        <ShowMessage
+                          islabel={theme.toString()}
+                          htmlFor="IS_CODE"
+                        >
+                          Refferal Code
+                        </ShowMessage>
+                      )}
+                      {isCode && (
+                        <UserCodeInput
+                          value={userCode}
+                          placeholder="Enter User Code"
+                          onChange={(e) => setUserCode(e.target.value)}
+                        />
+                      )}
                     </UserContainer>
                   </ShowContainer>
                   <FormButton type="submit">Register</FormButton>
@@ -272,6 +334,28 @@ const SignUpForm = () => {
                   </FormNav>
                 </PageForm>
               </PageInputs>
+              <Popup open={otpStatus}>
+                <VerifyContainer>
+                  <VerifyView>
+                    <VerifyForm onSubmit={verifyOTPAndRegister}>
+                      <VerifyTitle>
+                        Enter One Time Password
+                        <VerifyCon>
+                          <VerifyInput
+                            placeholder="Enter OTP"
+                            onChange={(e) => setOtpResponse(e.target.value)}
+                          />
+                          <VerifyButton type="submit">Verify</VerifyButton>
+                        </VerifyCon>
+                        {verificationStatus && (
+                          <VerifyError>{verificationErrorMsg}</VerifyError>
+                        )}
+                      </VerifyTitle>
+                    </VerifyForm>
+                  </VerifyView>
+                </VerifyContainer>
+              </Popup>
+              <Popup></Popup>
             </ProfileView>
           </ProfilePage>
         );

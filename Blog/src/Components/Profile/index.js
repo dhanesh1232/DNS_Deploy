@@ -2,8 +2,15 @@ import React from "react";
 import BlogContext from "../../Context/blogContext";
 import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
-import { ProfilePage } from "./styledComponents";
+import {
+  ProfilePage,
+  UnderButton,
+  UnderHead,
+  UnderImg,
+  UnderMaintain,
+} from "./styledComponents";
 import SignUpForm from "../SignUp";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const admin_token = Cookies.get("admin_token");
@@ -25,7 +32,19 @@ const Profile = () => {
             {admin_token || sub_admin_token || user_token !== undefined ? (
               ""
             ) : (
-              <SignUpForm />
+              <UnderMaintain>
+                <UnderImg
+                  alt="under-maintain"
+                  src="https://res.cloudinary.com/dhzw6k0vc/image/upload/v1715068130/Untitled_design__1_-removebg-preview_kq4m2p.png"
+                />
+                <UnderHead>
+                  Under Maintainance Please Come back Later! <br />
+                  Goto Home Page
+                </UnderHead>
+                <Link to="/">
+                  <UnderButton>Home</UnderButton>
+                </Link>
+              </UnderMaintain>
             )}
           </ProfilePage>
         );

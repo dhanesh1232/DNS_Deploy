@@ -45,11 +45,12 @@ if (process.env.NODE_ENV !== "test") {
     console.log(`Server started on port ${PORT}`);
   });
 }
+
 async function scrapProductCard(item) {
   try {
     let url = `https://www.amazon.in/s?k=${item}`;
     console.log(url);
-    return await scrapeAmazonProduct(url, 1);
+    //return await scrapeAmazonProduct(url, 1);
   } catch (err) {
     console.error("Error scraping product card:", err);
   }
@@ -82,9 +83,10 @@ let product_value = [
   "Projector",
   "Chargers",
 ];
-scrapProductCard(product_value[3]);
+scrapProductCard(product_value[0]);
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
 });
+
 module.exports = app;
