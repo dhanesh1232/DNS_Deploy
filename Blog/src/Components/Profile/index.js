@@ -19,7 +19,7 @@ const Profile = () => {
   console.log(admin_token, sub_admin_token, user_token);
   return (
     <BlogContext.Consumer>
-      {({ theme, activeProfileTab, setActiveprofileTab, profileTab }) => {
+      {({ theme }) => {
         return (
           <ProfilePage>
             <Helmet>
@@ -37,7 +37,7 @@ const Profile = () => {
                   alt="under-maintain"
                   src="https://res.cloudinary.com/dhzw6k0vc/image/upload/v1715068130/Untitled_design__1_-removebg-preview_kq4m2p.png"
                 />
-                <UnderHead>
+                <UnderHead textcolor={theme.toString()}>
                   Under Maintainance Please Come back Later! <br />
                   Goto Home Page
                 </UnderHead>

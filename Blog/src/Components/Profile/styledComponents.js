@@ -31,7 +31,7 @@ export const UnderImg = styled.img`
 `;
 export const UnderHead = styled.h1`
   font-size: 35px;
-  color: #262626;
+   color: ${(props) => (JSON.parse(props.textcolor) ? "#fff" : "#262626")};
   text-align: center;
   padding: 0;
   margin: 0;
