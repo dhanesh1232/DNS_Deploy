@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Helmet } from "react-helmet";
 import "./index.css";
 
 export default class AddPhone extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phoneName: "",
+      productName: "",
     };
   }
 
@@ -16,40 +15,39 @@ export default class AddPhone extends Component {
 
   startUpdatingData = async (e) => {
     e.preventDefault();
-    console.log(this.state.phoneName);
-    let { phoneName } = this.state;
-    let url = `http://localhost:3002/get-product/api?productName=${phoneName}`;
-    let res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    console.log(data);
+    let { productName } = this.state;
+    let url = `http://localhost:3002/api/add-products?product_name=${productName}`; // Include productName in the URL as a query parameter
+    try {
+      let res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   render() {
     return (
       <div className="page-container">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>Add Phone</title>
-          <meta
-            name="Add Mobiles"
-            content="Add Mobile data from any website using webscraping"
-          />
-        </Helmet>
-        <form className="add-phone" onSubmit={this.startUpdatingData}>
-          <input
-            type="text"
-            onChange={(e) => this.setState({ phoneName: e.target.value })}
-            value={this.state.phoneName}
-            className="add-phone-input"
-            placeholder="Add Phone Data"
-          />
-          <button type="submit">Submit</button>
-        </form>
+        <div className="control-page">
+          <ul className="result-data">
+          </ul>
+          <form className="add-phone" onSubmit={this.startUpdatingData}>
+            <input
+              type="text"
+              onChange={(e) => this.setState({ productName: e.target.value })}
+              value={this.state.phoneName}
+              className="add-phone-input"
+              placeholder="Add Phone Data"
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }

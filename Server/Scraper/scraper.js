@@ -33,12 +33,9 @@ const scrapeAmazonProduct = async (url, page) => {
   while (true) {
     try {
       console.log(`Next Page ${pages} Started....`);
-      const res = await axios.get(`${url}&page=${pages}`,{
-        headers: {
-          "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
-        },
-        httpsAgent: agent,
-      });
+      const res = await axios.get(`${url}&page=${pages}`,
+        options,
+      );
       const $ = cheerio.load(res.data);
       $('div[data-component-type="s-search-result"]').each(
         async (index, element) => {
@@ -65,7 +62,6 @@ const scrapeAmazonProduct = async (url, page) => {
             let existingProduct = await ProductCard.findOne({
               product_title: product.product_title,
             });
-
             if (!existingProduct) {
               if (product.product_current_price !== "") {
                 let todayDate = new Date().toLocaleDateString();

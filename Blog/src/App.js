@@ -7,7 +7,13 @@ import Profile from "./Components/Profile";
 import { PageContainer } from "./styledComponents";
 import Cookies from "js-cookie";
 import SignInForm from "./Components/SignIn";
+import Home from "./Components/Home";
+import Explore from "./Components/Explore";
 import "./App.css";
+import Tech from "./Components/Tech";
+import Blog from "./Components/Blog";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
 
 const profileTab = [
   {
@@ -74,13 +80,8 @@ class App extends Component {
   };
 
   render() {
-    const {
-      theme,
-      menuToggle,
-      activeProfileTab,
-      profileTab,
-      productsList,
-    } = this.state;
+    const { theme, menuToggle, activeProfileTab, profileTab, productsList } =
+      this.state;
     const admin_token = Cookies.get("admin_token");
     const sub_admin_token = Cookies.get("sub_admin_token");
     const user_token = Cookies.get("user_token");
@@ -98,9 +99,14 @@ class App extends Component {
         }}
       >
         <PageContainer isbg={theme ? "#262626" : "#fff"}>
-          <Header />
           <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/add-phone" component={AddPhone} />
+            <Route exact path="/explore" component={Explore} />
+            <Route exact path="/tech" component={Tech} />
+            <Route exact path="/blog" component={Blog} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact} />
             <Route
               exact
               path={
