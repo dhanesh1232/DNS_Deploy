@@ -2,7 +2,7 @@ import Header from "../Header";
 import BlogContext from "../../Context/blogContext";
 
 const Contact = () => (
-  <BlogContext>
+  <BlogContext.Consumer>
     {(value) => {
       const { theme } = value;
       return (
@@ -12,7 +12,7 @@ const Contact = () => (
         </>
       );
     }}
-  </BlogContext>
+  </BlogContext.Consumer>
 );
 
 export default Contact;
