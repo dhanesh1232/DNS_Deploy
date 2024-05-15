@@ -167,7 +167,6 @@ const Header = () => {
                   >
                     Contact
                   </NavLink>
-                  
                 </NavList>
               </NavPage>
             </NavContainer>

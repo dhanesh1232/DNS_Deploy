@@ -44,6 +44,10 @@ export const HeaderContainer = styled.div`
   width: 100vw;
   background: transparent;
   position: relative;
+  height: 10vh;
+  @media screen and (max-width: 768px) {
+    height: 8vh;
+  }
 `;
 
 export const LogoImage = styled.img`
