@@ -48,9 +48,8 @@ const SignUpForm = () => {
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
   const [isFocusedFirstName, setIsFocusedFirstName] = useState(false);
   const [isFocusedLastName, setIsFocusedLastName] = useState(false);
-  const [isFocusedConfirmPassword, setIsFocusedConfirmPassword] = useState(
-    false
-  );
+  const [isFocusedConfirmPassword, setIsFocusedConfirmPassword] =
+    useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isFocusedPhone, setIsFocusedPhone] = useState(false);
@@ -98,7 +97,7 @@ const SignUpForm = () => {
     const data = await res.json();
     if (res.status === 200) {
       setOtpStatus(data.success);
-      console.log(data)
+      console.log(data);
     } else {
       null;
     }

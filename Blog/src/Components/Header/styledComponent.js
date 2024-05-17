@@ -44,20 +44,17 @@ export const HeaderContainer = styled.div`
   width: 100vw;
   background: transparent;
   position: relative;
-  height: 10vh;
-  @media screen and (max-width: 768px) {
-    height: 8vh;
-  }
+  height: 8vh;
 `;
 
 export const LogoImage = styled.img`
   padding-left: 15px;
-  width: 125px;
-  height: 75px;
+  width: 95px;
+  height: 50px;
   transition: all 0.3s ease;
   @media screen and (max-width: 768px) {
     width: 105px;
-    height: 60px;
+    height: 50px;
   }
 `;
 
