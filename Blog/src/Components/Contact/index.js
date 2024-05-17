@@ -9,6 +9,7 @@ import {
   FaGithub,
 } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
+import Footer from "./../Footer";
 
 import {
   ContactPageHome,
@@ -31,6 +32,15 @@ import {
   InputCheck,
   InputCheckCon,
   InputCheckLabel,
+  ContactForm,
+  ContactHeaderBody,
+  ContactInputBody,
+  ContactHeader,
+  ContactInputLabel,
+  ContactGroup,
+  ContactInputTextarea,
+  FormButton,
+  NoteStrong,
 } from "./styledComponents";
 
 const Contact = () => {
@@ -61,23 +71,27 @@ const Contact = () => {
                   feel free to get in touch.
                 </SecondGreet>
                 <ContactInfoData>
-                  <ContactData
-                    navcolor={theme.toString()}
-                    href="mailto:ecoshopbusiness9@gmail.com?subject=Contact"
-                    onClick={handleEmailClick}
-                  >
-                    <strong>E-Mail: </strong>
-                    <DataSpan navcolor={theme.toString()}>
+                  <ContactData navcolor={theme.toString()}>
+                    <NoteStrong notecolor={theme.toString()}>
+                      E-Mail:-{" "}
+                    </NoteStrong>
+                    <DataSpan
+                      navcolor={theme.toString()}
+                      href="mailto:ecoshopbusiness9@gmail.com?subject=Contact"
+                      onClick={handleEmailClick}
+                    >
                       ecoshopbusiness9@gmail.com
                     </DataSpan>
                   </ContactData>
-                  <ContactData
-                    navcolor={theme.toString()}
-                    href="https://wa.me/+918143963821?text=Hello"
-                    target="_blank"
-                  >
-                    <strong>Phone: </strong>
-                    <DataSpan navcolor={theme.toString()}>
+                  <ContactData navcolor={theme.toString()}>
+                    <NoteStrong notecolor={theme.toString()}>
+                      Phone:-{" "}
+                    </NoteStrong>
+                    <DataSpan
+                      navcolor={theme.toString()}
+                      href="https://wa.me/+918143963821?text=Hello"
+                      target="_blank"
+                    >
                       +91-8143963821
                     </DataSpan>
                   </ContactData>
@@ -132,8 +146,10 @@ const Contact = () => {
                   </SocialIcons>
                 </ContactSocial>
                 <ThirdGreet thirdcolor={theme.toString()}>
-                  <strong>Note: </strong>Alternatively, you can fill out the
-                  form below, and we'll get back to you as soon as possible.
+                  <NoteStrong notecolor={theme.toString()}>Note: </NoteStrong>
+                  Alternatively, you can fill out the form below, and we'll get
+                  back to you as soon as possible. Click on Check Box to Access
+                  Contact Form
                 </ThirdGreet>
                 <EndContainer>
                   <InputCheckCon>
@@ -154,10 +170,80 @@ const Contact = () => {
               {contactFormCheck && (
                 <ContactFormPage>
                   <ContactFormHeading>
-                    Send Contact Informations
+                    Send Additional Information
                   </ContactFormHeading>
+                  <ContactForm>
+                    <ContactHeaderBody>
+                      <ContactHeader>
+                        <ContactInputLabel
+                          htmlFor="NAME"
+                          labelcolor={theme.toString()}
+                        >
+                          Name *
+                        </ContactInputLabel>
+                        <ContactInputBody
+                          type="text"
+                          id="NAME"
+                          placeholder="Name"
+                          inputcolor={theme.toString()}
+                        />
+                      </ContactHeader>
+                      <ContactHeader>
+                        <ContactInputLabel
+                          htmlFor="EMAIL"
+                          labelcolor={theme.toString()}
+                        >
+                          E Mail *
+                        </ContactInputLabel>
+                        <ContactInputBody
+                          type="email"
+                          id="EMAIL"
+                          placeholder="E-Mail"
+                          inputcolor={theme.toString()}
+                        />
+                      </ContactHeader>
+                    </ContactHeaderBody>
+                    <ContactGroup>
+                      <ContactInputLabel
+                        htmlFor="PHONE"
+                        labelcolor={theme.toString()}
+                      >
+                        Phone *
+                      </ContactInputLabel>
+                      <ContactInputBody
+                        id="PHONE"
+                        type="text"
+                        placeholder="Number"
+                        inputcolor={theme.toString()}
+                      />
+                    </ContactGroup>
+                    <ContactGroup>
+                      <ContactInputLabel
+                        htmlFor="MESSAGE"
+                        labelcolor={theme.toString()}
+                      >
+                        Message *
+                      </ContactInputLabel>
+                      <ContactInputTextarea
+                        id="MESSAGE"
+                        cols="50"
+                        rows="10"
+                        placeholder="Enter Your Message"
+                        inputcolor={theme.toString()}
+                      ></ContactInputTextarea>
+                    </ContactGroup>
+                    <FormButton
+                      type="submit"
+                      value="Submit"
+                      buttoncolor={theme.toString()}
+                    >
+                      Submit
+                    </FormButton>
+                  </ContactForm>
                 </ContactFormPage>
               )}
+
+              <Footer />
             </ContactPageHome>
           </>
         );

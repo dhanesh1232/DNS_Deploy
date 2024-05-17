@@ -13,6 +13,9 @@ export const ContactPageHome = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  @media screen and (max-width: 500px) {
+    gap: 20px;
+  }
 `;
 export const ContactPageHeading = styled.h1`
   transition: 0.3s all ease-in-out;
@@ -22,8 +25,8 @@ export const ContactPageHeading = styled.h1`
 
 export const ContactInfoPage = styled.div`
   width: 50%;
-  max-height: 95%;
-  min-height: 93%;
+  max-height: 85%;
+  min-height: 85%;
   @media screen and (max-width: 768px) {
     width: 92%;
   }
@@ -52,6 +55,10 @@ export const SecondGreet = styled.p`
     font-size: 16px;
   }
 `;
+export const NoteStrong = styled.strong`
+  font-size: 18px;
+  color: ${(props) => (JSON.parse(props.notecolor) ? "lightblue" : "")};
+`;
 export const ThirdGreet = styled.p`
   color: ${(props) => (JSON.parse(props.thirdcolor) ? "#fff" : "#000")};
   font-size: 18px;
@@ -66,12 +73,11 @@ export const ThirdGreet = styled.p`
 `;
 export const ContactInfoData = styled.div`
   display: flex;
-  width: 100%;
   margin-top: 25px;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
 `;
-export const ContactData = styled.a`
+export const ContactData = styled.p`
   font-size: 18px;
   transition: all 0.3s ease-in-out;
   margin-top: 5px;
@@ -82,11 +88,12 @@ export const ContactData = styled.a`
     font-size: 16px;
   }
 `;
-export const DataSpan = styled.span`
+export const DataSpan = styled.a`
   text-decoration: none;
   &:hover {
-    color: #0494ef;
+    color: blue;
   }
+  text-decoration: none;
   transition: all 0.3s ease-in-out;
   color: ${(props) => (JSON.parse(props.navcolor) ? "#fff" : "#000")};
 `;
@@ -126,6 +133,9 @@ export const EndContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-top: 25px;
+  @media screen and (max-width: 450px) {
+    margin: 0px;
+  }
 `;
 export const InputCheckCon = styled.div`
   width: 7rem;
@@ -136,7 +146,8 @@ export const InputCheckCon = styled.div`
 export const InputCheckLabel = styled.label`
   cursor: pointer;
   font-size: 14px;
-  color: ${(props) => props.labelcolor};
+  transition: all 0.3s ease-in-out;
+  color: ${(props) => (JSON.parse(props.labelcolor) ? "#fff" : "#000")};
   font-weight: 600;
   &:hover {
     color: darkblue;
@@ -154,8 +165,126 @@ export const ContactFormPage = styled.div`
   min-height: 90%;
   max-height: 90%;
   transition: 0.3s all ease-in-out;
+  @media screen and (max-width: 768px) {
+    width: 92%;
+  }
 `;
 export const ContactFormHeading = styled.h2`
-  font-size: 25px;
+  font-size: 24px;
   color: gray;
+  text-align: center;
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
+  }
+  transition: all 0.3s ease-in-out;
+`;
+export const ContactForm = styled.form`
+  width: 100%;
+`;
+export const ContactHeaderBody = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  transition: all 0.3s ease-in-out;
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+  @media screen and (min-width: 451px) and (max-width: 768px) {
+    flex-direction: row;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1000px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+export const ContactHeader = styled.div`
+  width: 48%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 450px) and (max-width: 1000px) {
+    width: 100%;
+  }
+`;
+export const ContactInputBody = styled.input`
+  width: 100%;
+  height: 3.2rem;
+  font-size: 16px;
+  background: #8080802b;
+  border: 2px solid transparent;
+  outline: none;
+  &:hover {
+    background: #4b4bae46;
+    border: 2px solid blue;
+    box-shadow:
+      0 0 2px blue,
+      0 0 2px skyblue;
+  }
+  padding-left: 10px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 8px skyblue;
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  transition: all 0.3s ease-in-out;
+  color: ${(props) => (JSON.parse(props.inputcolor) ? "#fff" : "#000")};
+`;
+export const ContactInputLabel = styled.label`
+  font-size: 16px;
+  color: ${(props) => (JSON.parse(props.labelcolor) ? "#fff" : "#000")};
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+`;
+export const ContactGroup = styled.div`
+  width: 100%;
+  margin-top: 15px;
+`;
+export const ContactInputTextarea = styled.textarea`
+  width: 100%;
+  font-size: 16px;
+  background: #8080802b;
+  border: 2px solid transparent;
+  outline: none;
+  &:hover {
+    background: #4b4bae46;
+    border: 2px solid blue;
+    box-shadow:
+      0 0 2px blue,
+      0 0 2px skyblue;
+  }
+  padding-left: 10px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 8px skyblue;
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  transition: all 0.3s ease-in-out;
+  color: ${(props) => (JSON.parse(props.inputcolor) ? "#fff" : "#000")};
+`;
+export const FormButton = styled.button`
+  height: 3.2rem;
+  width: 100%;
+  margin-top: 10px;
+  background: #0494ef;
+  &:hover {
+    background: transparent;
+    border: 2px solid blue;
+    box-shadow:
+      0 0 2px blue,
+      0 0 2px skyblue;
+    color: ${(props) => (JSON.parse(props.buttoncolor) ? "#fff" : "#000")};
+  }
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
 `;
