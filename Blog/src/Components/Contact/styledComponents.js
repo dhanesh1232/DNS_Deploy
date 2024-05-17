@@ -97,7 +97,6 @@ export const ContactSocial = styled.div`
 export const SocialHead = styled.h2`
   font-size: 20px;
   transition: all 0.3s ease-in-out;
-
   color: ${(props) => (JSON.parse(props.socialcolor) ? "#fff" : "#262626")};
 `;
 export const SocialIcons = styled.ul`
