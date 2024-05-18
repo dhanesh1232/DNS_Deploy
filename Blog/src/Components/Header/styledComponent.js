@@ -45,6 +45,7 @@ export const HeaderContainer = styled.div`
   background: transparent;
   position: relative;
   height: 8vh;
+  font-family: "Roboto";
 `;
 
 export const LogoImage = styled.img`
@@ -63,6 +64,7 @@ export const NavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  transition: all 0.3s ease;
 `;
 export const NavPage = styled.div`
   width: 95%;
@@ -70,7 +72,6 @@ export const NavPage = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  transition: all 0.3s ease;
   z-index: 100;
   background: ${(props) => (JSON.parse(props.isbgtheme) ? "#262626" : "#fff")};
   @media screen and (max-width: 768px) {
@@ -108,7 +109,8 @@ export const NavList = styled.ul`
   width: 84%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8%;
+  justify-content: flex-end;
   position: relative;
   transition: all 0.3s ease;
   @media screen and (max-width: 768px) {
@@ -153,9 +155,10 @@ export const SerachPageControl = styled.div`
   height: 10%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   position: relative;
   order: 1;
+  gap: 15%;
   @media screen and (max-width: 768px) {
     width: 100%;
     display: flex;
@@ -248,8 +251,8 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 30px;
+  width: 40px;
+  height: 20px;
   overflow: hidden;
 `;
 export const InputCheckbox = styled.input`
@@ -265,14 +268,13 @@ export const Slider = styled.span`
   background: #000;
   transition: 0.4s;
   border-radius: 34px;
-
   &:before {
     position: absolute;
     content: "";
-    height: 23px;
-    width: 23px;
+    height: 15px;
+    width: 15px;
     left: 2px;
-    bottom: 4px;
+    bottom: 3.2px;
     background: ${(props) => (JSON.parse(props.isbg) ? "#000" : "#fff")};
     transition: 0.4s;
     border-radius: 50%;
@@ -287,12 +289,14 @@ export const Slider = styled.span`
   }
 `;
 export const ProfileContainer = styled.div`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: ${(props) => (JSON.parse(props.ispro) ? "#fff" : "#000")};
   font-size: 28px;
   display: flex;
   align-items: center;
+  font-size: 20px;
   justify-content: center;
+  margin-right: 10px;
 `;

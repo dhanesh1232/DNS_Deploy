@@ -14,6 +14,8 @@ import Tech from "./Components/Tech";
 import Blog from "./Components/Blog";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
+import PrivacyPolicy from "./Components/Privacy Policy";
+import TermsAndConditions from "./Components/Terms And Conditions";
 
 const profileTab = [
   {
@@ -107,6 +109,12 @@ class App extends Component {
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+            <Route
+              exact
+              path="/terms-and-conditions"
+              component={TermsAndConditions}
+            />
             <Route
               exact
               path={

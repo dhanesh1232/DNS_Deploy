@@ -16,6 +16,7 @@ export const ContactPageHome = styled.div`
   @media screen and (max-width: 500px) {
     gap: 20px;
   }
+  font-family: "Roboto";
 `;
 export const ContactPageHeading = styled.h1`
   transition: 0.3s all ease-in-out;
@@ -26,9 +27,12 @@ export const ContactPageHeading = styled.h1`
 export const ContactInfoPage = styled.div`
   width: 50%;
   max-height: 85%;
-  min-height: 85%;
+  min-height: 92%;
   @media screen and (max-width: 768px) {
     width: 92%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1100px) {
+    width: 75%;
   }
 `;
 export const MiniHeading = styled.h3`

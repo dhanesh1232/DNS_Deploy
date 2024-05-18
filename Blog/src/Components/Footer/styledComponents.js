@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 export const FooterPage = styled.div`
   width: 100%;
-  background: transparent;
-  border-top: 1px solid gray;
+  background: #8080802e;
+  margin-top: 15px;
+  font-family: "Roboto";
 `;
 export const FooterCon = styled.div`
   width: 100%;
