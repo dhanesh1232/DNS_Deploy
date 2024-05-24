@@ -1,4 +1,3 @@
-import { ThemeConsumer } from "styled-components";
 import BlogContext from "../../Context/blogContext";
 import {
   FooterPage,
@@ -6,6 +5,7 @@ import {
   NavLinkFooter,
   PoliciesCon,
   PoliciesHeading,
+  SliderTextNav,
   PoliciesList,
 } from "./styledComponents";
 const Footer = () => (
@@ -14,7 +14,7 @@ const Footer = () => (
       const { theme } = value;
       return (
         <>
-          <FooterPage>
+          <FooterPage footerbg={theme.toString()}>
             <PoliciesCon>
               <PoliciesHeading headcolor={theme.toString()}>
                 Policies
@@ -42,7 +42,10 @@ const Footer = () => (
             </PoliciesCon>
             <hr />
             <FooterCon copycolor={theme.toString()}>
-              <p>Copyright &copy; </p> <p>ECO DROP</p>
+              <p>Copyright &copy; 2023 </p>
+              <SliderTextNav linkcolor={theme.toString()} to="/">
+                ECO DROP
+              </SliderTextNav>
             </FooterCon>
           </FooterPage>
         </>
