@@ -182,7 +182,10 @@ const PrivacyPolicy = () => (
               <SecondStrong secondstrongcolor={theme.toString()} mrg="5px">
                 If you have any questions about this Privacy Policy, please
                 contact us at{" "}
-                <NavLinkPrivacy secondstrongcolor={theme.toString()}>
+                <NavLinkPrivacy
+                  secondstrongcolor={theme.toString()}
+                  to="/contact"
+                >
                   Click Here
                 </NavLinkPrivacy>
               </SecondStrong>

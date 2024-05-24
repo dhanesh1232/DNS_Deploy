@@ -18,12 +18,15 @@ export const TermsPage = styled.div`
   }
 `;
 export const TermsBody = styled.div`
-  width: 50%;
+  width: 60%;
   min-height: 100%;
   @media screen and (max-width: 768px) {
     width: 92%;
   }
-  @media screen and (min-width: 768px) and (max-width: 1100px) {
+  @media screen and (min-width: 768px) and (max-width: 1000px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 1150px) {
     width: 75%;
   }
 `;
