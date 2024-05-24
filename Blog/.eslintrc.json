@@ -16,9 +16,9 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "prettier"],
   "rules": {
-    // Add your custom rules here
+    "prettier/prettier": "error"
   },
   "settings": {
     "react": {
