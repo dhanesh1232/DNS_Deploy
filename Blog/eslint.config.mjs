@@ -1,8 +1,5 @@
-import { globals } from "globals";
 import pluginJs from "@eslint/eslint-plugin";
-import pluginReactRecommended from "eslint-plugin-react/configs/recommended.js"; // Updated import
-
-import { fixupConfigRules } from "@eslint/compat";
+import pluginReactRecommended from "eslint-plugin-react/configs/recommended.js";
 
 export default {
   parser: "@babel/eslint-parser",
@@ -14,12 +11,6 @@ export default {
     browser: true,
     es2021: true,
   },
-  extends: [
-    pluginJs.configs.recommended,
-    pluginReactRecommended, // Updated to use eslint-plugin-react/configs/recommended.js
-    // ... Other extensions
-  ],
-  rules: {
-    // Your custom rules
-  },
+  extends: [pluginJs.configs.recommended, pluginReactRecommended],
+  rules: {},
 };
