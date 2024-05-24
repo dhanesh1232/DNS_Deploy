@@ -21,7 +21,6 @@ import {
   HeaderMainContainer,
   NavLink,
 } from "./styledComponent";
-import HeaderSlicks from "../Header Top";
 
 const Header = () => {
   const { theme, menuToggle, setTheme, setMenuToggle } =
@@ -38,7 +37,7 @@ const Header = () => {
 
   return (
     <HeaderMainContainer>
-      <HeaderSlicks />
+      
       <HeaderContainer themecolor={theme ? "#000" : "#fff"}>
         <Link to="/">
           <LogoImage
