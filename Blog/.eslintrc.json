@@ -18,7 +18,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error" // Enforce Prettier formatting
   },
   "settings": {
     "react": {
