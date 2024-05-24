@@ -12,5 +12,14 @@ export default {
     es2021: true,
   },
   extends: [pluginJs.configs.recommended, pluginReactRecommended],
-  rules: {},
+  rules: {
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
+    indent: ["error", 2],
+    "no-console": "warn",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
+  },
 };
