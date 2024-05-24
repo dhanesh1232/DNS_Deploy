@@ -22,7 +22,7 @@
     "http-proxy": "^1.18.1",
     "https": "^1.0.0",
     "https-proxy-agent": "^7.0.4",
-    "mongoose": "^8.2.3",
+    "mongoose": "^8.2.3","nodemailer": "^6.9.13",
     "proxy-agent": "^6.4.0",
     "puppeteer": "^22.7.1",
     "request-promise": "^4.2.6",
