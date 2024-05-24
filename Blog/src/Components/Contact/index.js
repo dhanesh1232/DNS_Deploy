@@ -49,7 +49,7 @@ const Contact = () => {
     event.preventDefault();
     window.open("mailto:ecoshopbusiness9@gmail.com?subject=Contact", "_blank");
   };
-  
+
   return (
     <BlogContext.Consumer>
       {(value) => {

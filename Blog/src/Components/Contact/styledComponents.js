@@ -25,13 +25,16 @@ export const ContactPageHeading = styled.h1`
 `;
 
 export const ContactInfoPage = styled.div`
-  width: 50%;
+  width: 60%;
   max-height: 85%;
   min-height: 92%;
   @media screen and (max-width: 768px) {
     width: 92%;
   }
-  @media screen and (min-width: 768px) and (max-width: 1100px) {
+  @media screen and (min-width: 768px) and (max-width: 1000px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 1150px) {
     width: 75%;
   }
 `;
@@ -165,12 +168,18 @@ export const InputCheck = styled.input`
 `;
 /*Form Page Started*/
 export const ContactFormPage = styled.div`
-  width: 50%;
+  width: 60%;
   min-height: 90%;
   max-height: 90%;
   transition: 0.3s all ease-in-out;
   @media screen and (max-width: 768px) {
     width: 92%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1000px) {
+    width: 75%;
+  }
+  @media screen and (min-width: 1150px) {
+    width: 75%;
   }
 `;
 export const ContactFormHeading = styled.h2`
@@ -199,7 +208,7 @@ export const ContactHeaderBody = styled.div`
     flex-direction: row;
   }
   @media screen and (min-width: 769px) and (max-width: 1000px) {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 `;
