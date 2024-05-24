@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 export const AboutPage = styled.div`
   width: 100%;
   background: transparent !important;
-  height: 92vh;
+  height: 88vh;
   overflow-y: auto;
   scroll-behavior: smooth;
   transition: 0.3s all ease-in-out;
