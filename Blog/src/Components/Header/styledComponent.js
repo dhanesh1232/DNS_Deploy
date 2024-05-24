@@ -37,11 +37,22 @@ const rotateLeft = keyframes`
   }
 `;
 
+export const HeaderMainContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  background: transparent;
+  position: relative;
+  height: 12vh;
+  font-family: "Roboto";
+`;
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   background: transparent;
   position: relative;
   height: 8vh;
@@ -56,6 +67,10 @@ export const LogoImage = styled.img`
   @media screen and (max-width: 768px) {
     width: 105px;
     height: 50px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 75px;
+    height: 40px;
   }
 `;
 
@@ -123,7 +138,13 @@ export const NavList = styled.ul`
   }
 `;
 export const NavLink = styled(Link)`
-  font-size: 16px;
+  @media screen and (min-width: 1000px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  font-size: 15px;
   font-weight: bold;
   color: ${(props) => (JSON.parse(props.linkcolor) ? "#fff" : "#333")};
   text-decoration: none;
@@ -251,9 +272,10 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  width: 42px;
   height: 20px;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 `;
 export const InputCheckbox = styled.input`
   display: none;
@@ -261,12 +283,12 @@ export const InputCheckbox = styled.input`
 export const Slider = styled.span`
   position: absolute;
   cursor: pointer;
-  top: 0;
+  top: 2px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000;
-  transition: 0.4s;
+  background: ${(props) => (JSON.parse(props.isbg) ? "#fff" : "#000")};
+  transition: all 0.3s ease-in-out;
   border-radius: 34px;
   &:before {
     position: absolute;
@@ -274,6 +296,7 @@ export const Slider = styled.span`
     height: 15px;
     width: 15px;
     left: 2px;
+    top: 1px;
     bottom: 3.2px;
     background: ${(props) => (JSON.parse(props.isbg) ? "#000" : "#fff")};
     transition: 0.4s;
@@ -288,6 +311,7 @@ export const Slider = styled.span`
     transform: translateX(22px);
   }
 `;
+
 export const ProfileContainer = styled.div`
   width: 30px;
   height: 30px;
