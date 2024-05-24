@@ -49,6 +49,7 @@ const Contact = () => {
     event.preventDefault();
     window.open("mailto:ecoshopbusiness9@gmail.com?subject=Contact", "_blank");
   };
+  
   return (
     <BlogContext.Consumer>
       {(value) => {
@@ -138,8 +139,8 @@ const Contact = () => {
                     </SocialNav>
                     <SocialNav
                       iconcolor={theme ? "#fff" : "#000"}
-                      href="mailto:ecoshopbusiness9@gmail.com?subject=Contact"
-                      onClick={handleEmailClick}
+                      href="https://github.com/dhanesh1232"
+                      target="_blank"
                     >
                       <FaGithub />
                     </SocialNav>
